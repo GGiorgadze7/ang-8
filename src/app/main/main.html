@@ -1,0 +1,35 @@
+<main>
+  <h1>products</h1>
+
+  <section>
+    @for (product of products; track product.id; let i = $index) {
+      <div [ngClass]="['card', product.inStock ? 'instock' : 'outOfStock']">
+        <span>{{ product.name }}</span>
+
+        @if (product.price > 500) {
+          <span [ngStyle]="{ color: 'red' }">ფასი: {{ product.price }}ლ</span>
+        } @else if (product.price < 200) {
+          <span [ngStyle]="{ color: 'darkgreen' }">ფასი: {{ product.price }}ლ</span>
+        } @else {
+          <span [ngStyle]="{ color: 'orange' }">ფასი: {{ product.price }}ლ</span>
+        }
+
+        <span>{{ product.category }}</span>
+
+        @if (product.inStock === true) {
+          <button>კალათში დამატება</button>
+        } @else {
+          <p>მარაგი ამოიწურა</p>
+        }
+
+        @if (product.inStock === true) {
+
+        }
+
+
+      </div>
+    } @empty {
+      <h3>No Products Avaliable</h3>
+    }
+  </section>
+</main>
